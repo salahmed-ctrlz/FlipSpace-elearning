@@ -1,0 +1,48 @@
+[
+  {
+    "id": "t1",
+    "lessonId": "r1",
+    "title": "Questions about Introduction Video",
+    "posts": [
+      {
+        "id": "p1",
+        "author": "student1",
+        "authorName": "Alex Johnson",
+        "text": "I found the video really helpful! Can you share more examples of successful flipped classrooms?",
+        "createdAt": "2025-10-16T11:30:00Z",
+        "replies": [
+          {
+            "id": "p1_r1",
+            "author": "teacher1",
+            "authorName": "Hamoudi Benarba",
+            "text": "Great question! I'll share some case studies in our next session. Check the resources section for additional reading materials.",
+            "createdAt": "2025-10-16T14:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "author": "student2",
+        "authorName": "Maria Garcia",
+        "text": "How do we ensure all students complete the pre-class materials?",
+        "createdAt": "2025-10-17T09:15:00Z",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "t2",
+    "lessonId": "r3",
+    "title": "Active Learning Discussion",
+    "posts": [
+      {
+        "id": "p3",
+        "author": "student1",
+        "authorName": "Alex Johnson",
+        "text": "The think-pair-share technique sounds interesting. Has anyone tried it?",
+        "createdAt": "2025-10-21T10:00:00Z",
+        "replies": []
+      }
+    ]
+  }
+]

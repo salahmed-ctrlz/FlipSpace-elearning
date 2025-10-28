@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* FlipSpace Design System - Academic & Approachable */
+    --background: 40 40% 97%;  /* #F8F5F0 soft beige */
+    --foreground: 0 0% 12%;     /* #1E1E1E primary text */
+
+    --card: 0 0% 100%;          /* #FFFFFF */
+    --card-foreground: 0 0% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+
+    --primary: 204 100% 27%;    /* #004E89 deep academic blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 43 86% 38%;    /* #B8860B gold/ochre */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 40 20% 90%;        /* #E0DDD5 divider */
+    --muted-foreground: 0 0% 33%; /* #555555 secondary text */
+
+    --accent: 43 86% 38%;       /* #B8860B */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 90%;       /* #E0DDD5 */
+    --input: 40 20% 90%;
+    --ring: 45 75% 55%;         /* #CFA94A gold focus */
+
+    --radius: 0.75rem;
+
+    /* Gradients & Effects */
+    --shadow-paper: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lifted: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 204 20% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 204 15% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 204 15% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 204 80% 60%;
+    --primary-foreground: 0 0% 12%;
+
+    --secondary: 43 70% 50%;
+    --secondary-foreground: 0 0% 12%;
+
+    --muted: 204 15% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 43 70% 50%;
+    --accent-foreground: 0 0% 12%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 204 15% 20%;
+    --input: 204 15% 20%;
+    --ring: 45 75% 60%;
+  }
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Accessibility: Skip to content */
+  .skip-to-content {
+    @apply absolute -top-10 left-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-lg;
+    @apply focus:top-4 transition-all;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Paper effect for cards */
+  .paper-shadow {
+    box-shadow: var(--shadow-paper);
+  }
+
+  .paper-shadow-lifted {
+    box-shadow: var(--shadow-lifted);
+  }
+}

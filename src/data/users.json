@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "role": "teacher",
+    "username": "teacher1",
+    "password": "teachpass",
+    "name": "Hamoudi Benarba",
+    "email": "hamoudi@flipspace.edu"
+  },
+  {
+    "id": "2",
+    "role": "student",
+    "username": "student1",
+    "password": "studpass",
+    "name": "Alex Johnson",
+    "email": "alex@flipspace.edu"
+  },
+  {
+    "id": "3",
+    "role": "student",
+    "username": "student2",
+    "password": "studpass",
+    "name": "Maria Garcia",
+    "email": "maria@flipspace.edu"
+  }
+]

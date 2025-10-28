@@ -1,0 +1,55 @@
+[
+  {
+    "id": "q1",
+    "title": "Week 1 Knowledge Check",
+    "lessonId": "r1",
+    "questions": [
+      {
+        "id": "q1_1",
+        "type": "mcq",
+        "text": "What is the main principle of flipped learning?",
+        "options": [
+          "Students watch lectures at home and do homework in class",
+          "Teachers lecture more in class",
+          "Students work independently at all times",
+          "Homework is optional"
+        ],
+        "answer": 0,
+        "explain": "Flipped learning moves lecture content outside the classroom (typically through videos) so class time can be used for active, collaborative learning."
+      },
+      {
+        "id": "q1_2",
+        "type": "mcq",
+        "text": "What is a key benefit of flipped classrooms?",
+        "options": [
+          "Less preparation time for teachers",
+          "More passive learning",
+          "Increased student engagement and interaction",
+          "Fewer resources needed"
+        ],
+        "answer": 2,
+        "explain": "Flipped classrooms allow for more active learning, discussion, and personalized support during class time, leading to higher student engagement."
+      }
+    ]
+  },
+  {
+    "id": "q2",
+    "title": "Week 2 Comprehension Quiz",
+    "lessonId": "r3",
+    "questions": [
+      {
+        "id": "q2_1",
+        "type": "mcq",
+        "text": "Which is NOT an active learning strategy?",
+        "options": [
+          "Think-pair-share",
+          "Group problem-solving",
+          "Passive lecture listening",
+          "Peer teaching"
+        ],
+        "answer": 2,
+        "explain": "Passive lecture listening is a traditional approach. Active learning requires students to engage, discuss, and apply knowledge."
+      }
+    ]
+  }
+]
