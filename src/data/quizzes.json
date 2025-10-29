@@ -1,54 +1,54 @@
 [
   {
     "id": "q1",
-    "title": "Week 1 Knowledge Check",
+    "title": "L1 Grammar: Tenses Quiz",
     "lessonId": "r1",
     "questions": [
       {
         "id": "q1_1",
         "type": "mcq",
-        "text": "What is the main principle of flipped learning?",
+        "text": "Which sentence is in the Present Perfect tense?",
         "options": [
-          "Students watch lectures at home and do homework in class",
-          "Teachers lecture more in class",
-          "Students work independently at all times",
-          "Homework is optional"
+          "She has finished her homework.",
+          "She finished her homework.",
+          "She is finishing her homework.",
+          "She will finish her homework."
         ],
         "answer": 0,
-        "explain": "Flipped learning moves lecture content outside the classroom (typically through videos) so class time can be used for active, collaborative learning."
+        "explain": "Present Perfect tense is formed with 'has/have' + past participle to describe an action that happened at an unspecified time before now."
       },
       {
         "id": "q1_2",
         "type": "mcq",
-        "text": "What is a key benefit of flipped classrooms?",
+        "text": "Identify the past participle of the verb 'to write'.",
         "options": [
-          "Less preparation time for teachers",
-          "More passive learning",
-          "Increased student engagement and interaction",
-          "Fewer resources needed"
+          "Wrote",
+          "Writing",
+          "Written",
+          "Writes"
         ],
         "answer": 2,
-        "explain": "Flipped classrooms allow for more active learning, discussion, and personalized support during class time, leading to higher student engagement."
+        "explain": "'Written' is the past participle of 'to write', used in perfect tenses and passive voice."
       }
     ]
   },
   {
     "id": "q2",
-    "title": "Week 2 Comprehension Quiz",
+    "title": "L2 Introduction to Linguistics: Core Concepts Quiz",
     "lessonId": "r3",
     "questions": [
       {
         "id": "q2_1",
         "type": "mcq",
-        "text": "Which is NOT an active learning strategy?",
+        "text": "What is the smallest unit of sound in a language?",
         "options": [
-          "Think-pair-share",
-          "Group problem-solving",
-          "Passive lecture listening",
-          "Peer teaching"
+          "Morpheme",
+          "Phoneme",
+          "Syntax",
+          "Lexeme"
         ],
         "answer": 2,
-        "explain": "Passive lecture listening is a traditional approach. Active learning requires students to engage, discuss, and apply knowledge."
+        "explain": "A phoneme is the smallest unit of sound that can distinguish one word from another in a particular language."
       }
     ]
   }

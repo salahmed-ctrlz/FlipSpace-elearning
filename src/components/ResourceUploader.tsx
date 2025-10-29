@@ -103,7 +103,7 @@ export const ResourceUploader = () => {
                 value={module}
                 onChange={(e) => setModule(e.target.value)}
                 required
-                placeholder="e.g., Week 1"
+                placeholder="e.g., L1 Grammar"
               />
             </div>
 

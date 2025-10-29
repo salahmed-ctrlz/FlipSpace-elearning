@@ -23,7 +23,7 @@ export default function About() {
           <div className="text-center mb-12">
             <h1 className="font-serif text-4xl md:text-5xl">About FlipSpace</h1>
             <p className="text-lg text-muted-foreground mt-4">
-              Revolutionizing education with the flipped classroom model.
+              A modern learning platform for the Department of English.
             </p>
           </div>
         </motion.div>
@@ -36,10 +36,10 @@ export default function About() {
                     </CardHeader>
                     <CardContent className="space-y-4 text-muted-foreground">
                         <p>
-                            To empower educators and engage students by shifting instruction to a learner-centered model, making education more interactive, personalized, and effective.
+                            To empower students in the Department of English by shifting instruction to a learner-centered model. We aim to make education more interactive, personalized, and effective.
                         </p>
                         <p>
-                            We believe that class time is best used for active learning and collaboration, not passive lectures. FlipSpace provides the tools to make this a reality.
+                            We believe that class time is best used for active learning and collaboration. This platform provides the tools to make this a reality by delivering core content outside the classroom.
                         </p>
                     </CardContent>
                 </Card>
@@ -51,10 +51,10 @@ export default function About() {
                     </CardHeader>
                     <CardContent className="space-y-4 text-muted-foreground">
                         <p>
-                            We envision a world where every student has access to a dynamic and supportive learning environment that adapts to their pace and style, fostering a lifelong love for learning.
+                            We envision a dynamic and supportive learning environment that adapts to each student's pace and style, fostering a lifelong love for language and literature.
                         </p>
                         <p>
-                            FlipSpace aims to be the leading platform in facilitating this educational transformation globally.
+                            This platform aims to be a key tool in facilitating this educational transformation within our department.
                         </p>
                     </CardContent>
                 </Card>

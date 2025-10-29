@@ -4,23 +4,23 @@
     "role": "teacher",
     "username": "teacher1",
     "password": "teachpass",
-    "name": "Hamoudi Benarba",
-    "email": "hamoudi@flipspace.edu"
+    "name": "Pr. Khalki Smaine",
+    "email": "khalki.smaine@univ-bechar.dz"
   },
   {
     "id": "2",
     "role": "student",
     "username": "student1",
     "password": "studpass",
-    "name": "Alex Johnson",
-    "email": "alex@flipspace.edu"
+    "name": "Hamoudi Benarba",
+    "email": "hamoudi.benarba@univ-bechar.dz"
   },
   {
     "id": "3",
     "role": "student",
     "username": "student2",
     "password": "studpass",
-    "name": "Maria Garcia",
-    "email": "maria@flipspace.edu"
+    "name": "Fatima Zahra",
+    "email": "fatima.zahra@univ-bechar.dz"
   }
 ]

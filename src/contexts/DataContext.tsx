@@ -37,7 +37,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [conversations, setConversations] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const loadData = async () => {
+  const fetchData = async () => {
     setLoading(true);
     try {
       const [resourcesData, quizzesData, discussionsData, conversationsData] = await Promise.all([
@@ -57,8 +57,22 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // Vite-specific Hot Module Replacement (HMR) to auto-refresh data on change
+  if (import.meta.hot) {
+    import.meta.hot.accept([
+      '/src/data/discussions.json',
+      '/src/data/resources.json',
+      '/src/data/quizzes.json',
+      '/src/data/users.json',
+      '/src/data/conversations.json',
+    ], () => {
+      console.log('HMR: Reloading mock data...');
+      fetchData();
+    });
+  }
+
   useEffect(() => {
-    loadData();
+    fetchData();
   }, []);
 
   const refreshResources = async () => {
@@ -108,14 +122,14 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return thread;
   };
 
-  const createPost = async (threadId: string, author: string, authorName: string, text: string) => {
-    const thread = await api.createPost(threadId, author, authorName, text);
+  const createPost = async (threadId: string, authorId: string, authorName: string, text: string) => {
+    const thread = await api.createPost(threadId, authorId, authorName, text);
     await refreshDiscussions();
     return thread;
   };
 
-  const createReply = async (threadId: string, postId: string, author: string, authorName: string, text: string) => {
-    const thread = await api.createReply(threadId, postId, author, authorName, text);
+  const createReply = async (threadId: string, postId: string, authorId: string, authorName: string, text: string) => {
+    const thread = await api.createReply(threadId, postId, authorId, authorName, text);
     await refreshDiscussions();
     return thread;
   };

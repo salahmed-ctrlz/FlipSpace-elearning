@@ -2,20 +2,20 @@
   {
     "id": "t1",
     "lessonId": "r1",
-    "title": "Questions about Introduction Video",
+    "title": "Questions about English Tenses",
     "posts": [
       {
         "id": "p1",
         "author": "student1",
-        "authorName": "Alex Johnson",
-        "text": "I found the video really helpful! Can you share more examples of successful flipped classrooms?",
+        "authorName": "Hamoudi Benarba",
+        "text": "I found the video on English tenses really helpful! Could we get more practice exercises for the past perfect continuous?",
         "createdAt": "2025-10-16T11:30:00Z",
         "replies": [
           {
             "id": "p1_r1",
             "author": "teacher1",
-            "authorName": "Hamoudi Benarba",
-            "text": "Great question! I'll share some case studies in our next session. Check the resources section for additional reading materials.",
+            "authorName": "Pr. Khalki Smaine",
+            "text": "Excellent question! I've just uploaded a new PDF with more exercises to the 'L1 Grammar' module. Please check the Resources page.",
             "createdAt": "2025-10-16T14:00:00Z"
           }
         ]
@@ -23,8 +23,8 @@
       {
         "id": "p2",
         "author": "student2",
-        "authorName": "Maria Garcia",
-        "text": "How do we ensure all students complete the pre-class materials?",
+        "authorName": "Fatima Zahra",
+        "text": "I'm a bit confused about the difference between a phoneme and an allophone. Can someone explain it simply?",
         "createdAt": "2025-10-17T09:15:00Z",
         "replies": []
       }
@@ -33,13 +33,13 @@
   {
     "id": "t2",
     "lessonId": "r3",
-    "title": "Active Learning Discussion",
+    "title": "Discussion on Core Linguistics Concepts",
     "posts": [
       {
         "id": "p3",
         "author": "student1",
-        "authorName": "Alex Johnson",
-        "text": "The think-pair-share technique sounds interesting. Has anyone tried it?",
+        "authorName": "Hamoudi Benarba",
+        "text": "The concept of 'morphemes' is quite interesting. Does anyone have examples of bound vs. free morphemes in Arabic?",
         "createdAt": "2025-10-21T10:00:00Z",
         "replies": []
       }

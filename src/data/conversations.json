@@ -3,12 +3,12 @@
     "id": "convo-1",
     "participant": {
       "id": "teacher1",
-      "name": "Hamoudi Benarba",
+      "name": "Pr. Khalki Smaine",
       "role": "teacher"
     },
     "messages": [
-      { "id": "msg-1", "senderId": "teacher1", "senderName": "Hamoudi Benarba", "text": "Hi there! Do you have any questions about this week's material?", "timestamp": "2023-10-27T10:00:00Z" },
-      { "id": "msg-2", "senderId": "student1", "senderName": "Alex Johnson", "text": "Not yet, but I'll let you know. Thanks!", "timestamp": "2023-10-27T10:02:00Z" }
+      { "id": "msg-1", "senderId": "teacher1", "senderName": "Pr. Khalki Smaine", "text": "Hi there! Do you have any questions about this week's material?", "timestamp": "2023-10-27T10:00:00Z" },
+      { "id": "msg-2", "senderId": "student1", "senderName": "Hamoudi Benarba", "text": "Not yet, but I'll let you know. Thanks!", "timestamp": "2023-10-27T10:02:00Z" }
     ],
     "lastMessage": "Not yet, but I'll let you know. Thanks!"
   },
@@ -16,11 +16,10 @@
     "id": "convo-2",
     "participant": {
       "id": "student2",
-      "name": "Maria Garcia",
+      "name": "Fatima Zahra",
       "role": "student"
     },
     "messages": [],
-    "lastMessage": "Start a conversation with Maria Garcia."
+    "lastMessage": "Start a conversation with Fatima Zahra."
   }
 ]
-

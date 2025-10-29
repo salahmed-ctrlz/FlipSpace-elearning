@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useData } from '@/contexts/DataContext';
 import { DiscussionThread } from '@/components/DiscussionThread';
@@ -15,9 +16,18 @@ const fadeIn = {
 
 export default function Forum() {
   const { discussions, loading } = useData();
-  const [selectedThread, setSelectedThread] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedThreadId, setSelectedThreadId] = useState<string | null>(searchParams.get('thread'));
 
-  const thread = discussions.find((d) => d.id === selectedThread);
+  useEffect(() => {
+    setSelectedThreadId(searchParams.get('thread'));
+  }, [searchParams]);
+
+  const handleSelectThread = (threadId: string) => {
+    setSearchParams({ thread: threadId });
+  };
+
+  const thread = discussions.find((d) => d.id === selectedThreadId);
 
   if (loading) {
     return (
@@ -40,8 +50,8 @@ export default function Forum() {
         <motion.div {...fadeIn}>
           <div className="flex items-center justify-between mb-4">
             <h1 className="font-serif text-4xl md:text-5xl">Discussion Forum</h1>
-            {selectedThread && (
-              <Button variant="outline" onClick={() => setSelectedThread(null)}>
+            {selectedThreadId && (
+              <Button variant="outline" onClick={() => setSearchParams({})}>
                 Back to Threads
               </Button>
             )}
@@ -51,9 +61,9 @@ export default function Forum() {
           </p>
         </motion.div>
 
-        {selectedThread && thread ? (
+        {selectedThreadId && thread ? (
           <motion.div
-            key={selectedThread}
+            key={selectedThreadId}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
@@ -83,7 +93,7 @@ export default function Forum() {
                   >
                     <Card
                       className="paper-shadow hover:paper-shadow-lifted transition-all duration-300 cursor-pointer"
-                      onClick={() => setSelectedThread(discussion.id)}
+                      onClick={() => handleSelectThread(discussion.id)}
                     >
                       <CardHeader>
                         <CardTitle className="font-serif">{discussion.title}</CardTitle>

@@ -12,12 +12,12 @@ const fadeIn = {
 export default function Help() {
   const faqs = [
     {
-      question: 'What is flipped learning?',
+      question: 'What is the purpose of this platform?',
       answer:
-        'Flipped learning is an instructional strategy where students gain first exposure to new material outside of class, usually via videos or readings. In-class time is then devoted to deeper discussion, problem-solving, and active learning.',
+        'This platform uses a flipped learning model. You are expected to review learning materials (videos, PDFs) before class. Class time will then be used for interactive activities, discussions, and deeper learning.',
     },
     {
-      question: 'How do I access course materials?',
+      question: 'How do I access learning materials?',
       answer:
         'Navigate to the Resources page to browse all available course materials. You can filter by module/week and view videos, PDFs, and other learning resources.',
     },

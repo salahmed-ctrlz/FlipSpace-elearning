@@ -48,11 +48,11 @@ The application will be available at `http://localhost:8080`
 ## 🔐 Demo Credentials
 
 ### Teacher Account
-- **Username**: `teacher1`
+- **Username**: `teacher1` (Pr. Khalki Smaine)
 - **Password**: `teachpass`
 
 ### Student Account
-- **Username**: `student1`
+- **Username**: `student1` (Hamoudi Benarba)
 - **Password**: `studpass`
 
 ## 🏗️ Tech Stack

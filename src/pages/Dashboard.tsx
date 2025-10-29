@@ -5,7 +5,7 @@ import { useData } from '@/contexts/DataContext';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookOpen, MessageSquare, FileCheck, BarChart3, Upload, CheckCircle, TrendingUp, Users } from 'lucide-react';
+import { BookOpen, MessageSquare, FileCheck, BarChart3, Upload, CheckCircle, TrendingUp, Users, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const fadeIn = {
@@ -17,7 +17,7 @@ const fadeIn = {
 export default function Dashboard() {
   const { user, isTeacher } = useAuth();
   const { resources, getUserProgress, getUserQuizAttempts } = useData();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {
@@ -40,15 +40,15 @@ export default function Dashboard() {
   const totalCompletions = resources.reduce((sum, r) => sum + (r.completions || 0), 0);
 
   const studentStats = [
-    { title: 'Resources Completed', value: `${completedResources}/${totalResources}`, icon: CheckCircle, color: 'text-green-600' },
-    { title: 'Overall Progress', value: `${progressPercentage}%`, icon: TrendingUp, color: 'text-blue-600' },
-    { title: 'Quizzes Taken', value: quizzesTaken, icon: FileCheck, color: 'text-purple-600' },
+    { title: 'Resources Completed', value: `${completedResources}/${totalResources}`, icon: CheckCircle, color: 'text-green-600', bgColor: 'bg-green-50 dark:bg-green-950/20' },
+    { title: 'Overall Progress', value: `${progressPercentage}%`, icon: TrendingUp, color: 'text-blue-600', bgColor: 'bg-blue-50 dark:bg-blue-950/20' },
+    { title: 'Quizzes Taken', value: quizzesTaken, icon: FileCheck, color: 'text-purple-600', bgColor: 'bg-purple-50 dark:bg-purple-950/20' },
   ];
 
   const teacherStats = [
-    { title: 'Total Resources', value: totalResources, icon: BookOpen, color: 'text-blue-600' },
-    { title: 'Total Resource Views', value: totalViews, icon: Users, color: 'text-purple-600' },
-    { title: 'Total Completions', value: totalCompletions, icon: CheckCircle, color: 'text-green-600' },
+    { title: 'Total Resources', value: totalResources, icon: BookOpen, color: 'text-blue-600', bgColor: 'bg-blue-50 dark:bg-blue-950/20' },
+    { title: 'Total Resource Views', value: totalViews, icon: Users, color: 'text-purple-600', bgColor: 'bg-purple-50 dark:bg-purple-950/20' },
+    { title: 'Total Completions', value: totalCompletions, icon: CheckCircle, color: 'text-green-600', bgColor: 'bg-green-50 dark:bg-green-950/20' },
   ];
 
   const teacherCards = [
@@ -58,6 +58,7 @@ export default function Dashboard() {
       icon: Upload,
       link: '/resources',
       color: 'text-blue-600',
+      bgColor: 'bg-blue-50 dark:bg-blue-950/20',
     },
     {
       title: 'View Analytics',
@@ -65,6 +66,7 @@ export default function Dashboard() {
       icon: BarChart3,
       link: '/analytics',
       color: 'text-green-600',
+      bgColor: 'bg-green-50 dark:bg-green-950/20',
     },
     {
       title: 'Manage Discussions',
@@ -72,6 +74,7 @@ export default function Dashboard() {
       icon: MessageSquare,
       link: '/forum',
       color: 'text-purple-600',
+      bgColor: 'bg-purple-50 dark:bg-purple-950/20',
     },
   ];
 
@@ -82,6 +85,7 @@ export default function Dashboard() {
       icon: BookOpen,
       link: '/resources',
       color: 'text-blue-600',
+      bgColor: 'bg-blue-50 dark:bg-blue-950/20',
     },
     {
       title: 'Take Assessments',
@@ -89,6 +93,7 @@ export default function Dashboard() {
       icon: FileCheck,
       link: '/assessments',
       color: 'text-green-600',
+      bgColor: 'bg-green-50 dark:bg-green-950/20',
     },
     {
       title: 'Join Discussions',
@@ -96,6 +101,7 @@ export default function Dashboard() {
       icon: MessageSquare,
       link: '/forum',
       color: 'text-purple-600',
+      bgColor: 'bg-purple-50 dark:bg-purple-950/20',
     },
   ];
 
@@ -103,79 +109,127 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <main id="main-content" className="container mx-auto max-w-[1200px] px-6 py-20">
-        <motion.div {...fadeIn}>
-          <h1 className="font-serif text-4xl md:text-5xl mb-4">
-            Welcome back, {user.name}
-          </h1>
-          <p className="text-lg text-muted-foreground mb-12">
-            {isTeacher
-              ? 'Manage your course and track student progress'
-              : 'Continue your learning journey'}
-          </p>
-        </motion.div>
-
-        {/* Quick Stats */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12"
-        >
-          <h2 className="font-serif text-2xl mb-6">At a Glance</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {(isTeacher ? teacherStats : studentStats).map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <Card key={index} className="paper-shadow">
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center justify-between">
-                      <CardDescription>{stat.title}</CardDescription>
-                      <Icon className={`h-5 w-5 ${stat.color}`} />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-3xl font-bold font-serif">{stat.value}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
+      <main id="main-content" className="container mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
+        
+        {/* Header Section */}
+        <motion.div {...fadeIn} className="mb-16">
+          <div className="space-y-4">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Welcome back, <span className="text-primary">{user.name}</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+              {isTeacher
+                ? 'Manage your course and track student progress'
+                : 'Continue your learning journey'}
+            </p>
           </div>
         </motion.div>
 
-        <h2 className="font-serif text-2xl mb-6">Quick Links</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cards.map((card, index) => {
-            const Icon = card.icon;
-            return (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              >
-                <Link to={card.link}>
-                  <Card className="paper-shadow hover:paper-shadow-lifted transition-all duration-300 group cursor-pointer h-full">
-                    <CardHeader>
-                      <div className={`mb-4 ${card.color}`}>
-                        <Icon className="h-10 w-10" />
+        {/* Quick Stats Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-16"
+        >
+          <div className="mb-8">
+            <h2 className="font-serif text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+              At a Glance
+            </h2>
+            <p className="text-muted-foreground text-sm">
+              Your performance summary
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(isTeacher ? teacherStats : studentStats).map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                >
+                  <Card className="paper-shadow hover:paper-shadow-lifted transition-all duration-300 h-full">
+                    <CardHeader className="pb-4 space-y-4">
+                      <div className="flex items-start justify-between">
+                        <CardDescription className="text-sm font-medium">
+                          {stat.title}
+                        </CardDescription>
+                        <div className={`p-2.5 rounded-xl ${stat.bgColor}`}>
+                          <Icon className={`h-5 w-5 ${stat.color}`} />
+                        </div>
                       </div>
-                      <CardTitle className="font-serif text-xl group-hover:text-primary transition-colors">
-                        {card.title}
-                      </CardTitle>
-                      <CardDescription>{card.description}</CardDescription>
+                      <div>
+                        <p className="text-4xl font-bold font-serif tracking-tight">
+                          {stat.value}
+                        </p>
+                      </div>
                     </CardHeader>
-                    <CardContent>
-                      <Button variant="outline" className="w-full">
-                        Get Started
-                      </Button>
-                    </CardContent>
                   </Card>
-                </Link>
-              </motion.div>
-            );
-          })}
-        </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.section>
+
+        {/* Quick Links Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <div className="mb-8">
+            <h2 className="font-serif text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+              Quick Actions
+            </h2>
+            <p className="text-muted-foreground text-sm">
+              Get started with these key features
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cards.map((card, index) => {
+              const Icon = card.icon;
+              return (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                >
+                  <Link to={card.link} className="block h-full">
+                    <Card className="paper-shadow hover:paper-shadow-lifted transition-all duration-300 group cursor-pointer h-full border-border/60 hover:border-primary/30">
+                      <CardHeader className="space-y-6 pb-4">
+                        <div className={`w-14 h-14 rounded-2xl ${card.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className={`h-7 w-7 ${card.color}`} />
+                        </div>
+                        <div className="space-y-3">
+                          <CardTitle className="font-serif text-xl font-semibold group-hover:text-primary transition-colors">
+                            {card.title}
+                          </CardTitle>
+                          <CardDescription className="text-sm leading-relaxed">
+                            {card.description}
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="pt-2">
+                        <Button 
+                          variant="outline" 
+                          className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300"
+                        >
+                          <span>Get Started</span>
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.section>
       </main>
     </div>
   );

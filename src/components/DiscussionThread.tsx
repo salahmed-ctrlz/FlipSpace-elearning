@@ -10,6 +10,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useData } from '@/contexts/DataContext';
 import { useToast } from '@/hooks/use-toast';
 import { formatDistanceToNow } from 'date-fns';
+import { api } from '@/utils/api-mock';
 
 interface DiscussionThreadProps {
   thread: any;
@@ -30,7 +31,7 @@ export const DiscussionThread = ({ thread }: DiscussionThreadProps) => {
 
     setLoading(true);
     try {
-      await createPost(thread.id, user.username, user.name, newPost);
+      await createPost(thread.id, user.id, user.name, newPost);
       setNewPost('');
       toast({
         title: 'Post created!',
@@ -52,7 +53,7 @@ export const DiscussionThread = ({ thread }: DiscussionThreadProps) => {
 
     setLoading(true);
     try {
-      await createReply(thread.id, postId, user.username, user.name, replyText);
+      await createReply(thread.id, postId, user.id, user.name, replyText);
       setReplyText('');
       setReplyTo(null);
       toast({
@@ -79,6 +80,7 @@ export const DiscussionThread = ({ thread }: DiscussionThreadProps) => {
   };
 
   return (
+
     <div className="space-y-6">
       <Card className="paper-shadow">
         <CardHeader>
@@ -98,16 +100,16 @@ export const DiscussionThread = ({ thread }: DiscussionThreadProps) => {
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <Link to={`/profile/${post.author}`} className="font-medium hover:underline">
                       {post.authorName}
                     </Link>
                     <span className="text-xs text-muted-foreground">
                       {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
                     </span>
-                    {post.author.includes('teacher') && (
-                      <Badge variant="secondary" className="text-xs">
-                        Teacher
+                    {api.findUser(post.author)?.role === 'teacher' && (
+                      <Badge variant="secondary" className="text-xs capitalize">
+                        {api.findUser(post.author).role}
                       </Badge>
                     )}
                   </div>
@@ -116,31 +118,34 @@ export const DiscussionThread = ({ thread }: DiscussionThreadProps) => {
                   {/* Replies */}
                   {post.replies && post.replies.length > 0 && (
                     <div className="ml-8 mt-4 space-y-4 border-l-2 border-muted pl-4">
-                      {post.replies.map((reply: any) => (
-                        <div key={reply.id} className="flex gap-3">
-                          <Avatar className="h-8 w-8">
-                            <AvatarFallback className="bg-secondary text-secondary-foreground text-xs">
-                              {getInitials(reply.authorName)}
-                            </AvatarFallback>
-                          </Avatar>
-                          <div className="flex-1 space-y-1">
-                            <div className="flex items-center gap-2">
-                              <Link to={`/profile/${reply.author}`} className="font-medium text-sm hover:underline">
-                                {reply.authorName}
-                              </Link>
-                              <span className="text-xs text-muted-foreground">
-                                {formatDistanceToNow(new Date(reply.createdAt), { addSuffix: true })}
-                              </span>
-                              {reply.author.includes('teacher') && (
-                                <Badge variant="secondary" className="text-xs">
-                                  Teacher
-                                </Badge>
-                              )}
+                      {post.replies.map((reply: any) => {
+                        const replyAuthor = api.findUser(reply.author);
+                        return (
+                          <div key={reply.id} className="flex gap-3">
+                            <Avatar className="h-8 w-8">
+                              <AvatarFallback className="bg-secondary text-secondary-foreground text-xs">
+                                {getInitials(reply.authorName)}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div className="flex-1 space-y-1">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <Link to={`/profile/${reply.author}`} className="font-medium text-sm hover:underline">
+                                  {reply.authorName}
+                                </Link>
+                                <span className="text-xs text-muted-foreground">
+                                  {formatDistanceToNow(new Date(reply.createdAt), { addSuffix: true })}
+                                </span>
+                                {replyAuthor?.role === 'teacher' && (
+                                  <Badge variant="secondary" className="text-xs capitalize">
+                                    {replyAuthor.role}
+                                  </Badge>
+                                )}
+                              </div>
+                              <p className="text-sm">{reply.text}</p>
                             </div>
-                            <p className="text-sm">{reply.text}</p>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   )}
 
