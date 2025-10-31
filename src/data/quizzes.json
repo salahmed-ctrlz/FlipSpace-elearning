@@ -15,7 +15,7 @@
           "She will finish her homework."
         ],
         "answer": 0,
-        "explain": "Present Perfect tense is formed with 'has/have' + past participle to describe an action that happened at an unspecified time before now."
+        "explain": "The Present Perfect tense is used to describe actions that happened at an unspecified time in the past but have relevance to the present. It's formed with 'has' or 'have' followed by the past participle of the main verb. In this case, 'She has finished her homework' correctly uses 'has' + 'finished' (the past participle of 'finish'). The other options represent the Simple Past ('finished'), Present Continuous ('is finishing'), and Simple Future ('will finish')."
       },
       {
         "id": "q1_2",
@@ -28,7 +28,7 @@
           "Writes"
         ],
         "answer": 2,
-        "explain": "'Written' is the past participle of 'to write', used in perfect tenses and passive voice."
+        "explain": "The past participle is a form of a verb used to create perfect tenses (e.g., 'I have written') and the passive voice (e.g., 'The book was written'). For the irregular verb 'to write', the simple past is 'wrote', the present participle is 'writing', and the past participle is 'written'. Therefore, 'Written' is the correct answer."
       }
     ]
   },
@@ -47,8 +47,8 @@
           "Syntax",
           "Lexeme"
         ],
-        "answer": 2,
-        "explain": "A phoneme is the smallest unit of sound that can distinguish one word from another in a particular language."
+        "answer": 1,
+        "explain": "In phonology, a phoneme is the smallest unit of sound that can create a distinction in meaning. For example, the sounds /p/ and /b/ in English are phonemes because they distinguish words like 'pat' and 'bat'. A morpheme is the smallest unit of meaning (like '-ed' for past tense), syntax refers to sentence structure, and a lexeme is a basic lexical unit of a language (like the word 'run')."
       }
     ]
   }

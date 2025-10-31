@@ -3,12 +3,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle2, XCircle, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useData } from '@/contexts/DataContext';
 import { useToast } from '@/hooks/use-toast';
+import { ExplainAnswer } from './ui/explain-answer';
 
 interface QuizPlayerProps {
   quiz: any;
@@ -48,7 +48,7 @@ export const QuizPlayer = ({ quiz, onComplete }: QuizPlayerProps) => {
 
     setLoading(true);
     try {
-      const result = await submitQuizAttempt(user.id, quiz.id, answers);
+      const result = await submitQuizAttempt(user.id, quiz, answers);
       setResults(result);
       setSubmitted(true);
       toast({
@@ -85,33 +85,24 @@ export const QuizPlayer = ({ quiz, onComplete }: QuizPlayerProps) => {
         </CardHeader>
         <CardContent className="space-y-6">
           {quiz.questions.map((q: any, index: number) => {
-            const result = results.results[index];
+            const questionForExplain = {
+              id: q.id,
+              stem: q.text,
+              options: q.options.map((opt: string, i: number) => ({ id: `${i}`, label: opt })),
+              correctOptionId: `${q.answer}`,
+              explanations: {
+                correct: q.explain,
+                fallbackIncorrect: q.explain,
+              },
+            };
+            const selectedId = results.results[index].userAnswer;
+
             return (
-              <div key={q.id} className="space-y-3">
-                <div className="flex items-start gap-2">
-                  {result.correct ? (
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  ) : (
-                    <XCircle className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
-                  )}
-                  <div className="flex-1">
-                    <p className="font-medium">{q.text}</p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Your answer: {q.options[result.userAnswer]}
-                    </p>
-                    {!result.correct && (
-                      <p className="text-sm text-green-700 mt-1">
-                        Correct answer: {q.options[result.correctAnswer]}
-                      </p>
-                    )}
-                    <Alert className="mt-2">
-                      <AlertDescription className="text-sm">
-                        {result.explanation}
-                      </AlertDescription>
-                    </Alert>
-                  </div>
-                </div>
-              </div>
+              <ExplainAnswer
+                key={q.id}
+                question={questionForExplain}
+                selectedOptionId={selectedId !== null ? `${selectedId}` : null}
+              />
             );
           })}
           <Button onClick={() => {

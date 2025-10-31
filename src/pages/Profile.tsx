@@ -295,8 +295,8 @@ export default function Profile() {
                     <h3 className="text-lg font-medium mb-3 flex items-center gap-2"><FileDown className="h-5 w-5 text-blue-600" /> Downloaded Reports</h3>
                     <Separator />
                     <ul className="mt-4 space-y-3">
-                      {downloadedReports.length > 0 ? downloadedReports.map((report: any) => (
-                        <li key={report.id} className="text-sm">
+                      {downloadedReports.length > 0 ? downloadedReports.map((report: any, index: number) => (
+                        <li key={`${report.id}-${index}`} className="text-sm">
                           <p>Downloaded the <span className="font-medium">"{report.details.reportName}"</span></p>
                           <p className="text-xs text-muted-foreground">{formatDistanceToNow(new Date(report.timestamp), { addSuffix: true })}</p>
                         </li>

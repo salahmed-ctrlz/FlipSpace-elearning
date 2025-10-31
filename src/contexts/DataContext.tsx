@@ -13,7 +13,8 @@ interface DataContextType {
   createResource: (resource: any) => Promise<any>;
   updateResource: (id: string, updates: any) => Promise<any>;
   deleteResource: (id: string) => Promise<void>;
-  submitQuizAttempt: (userId: string, quizId: string, answers: number[]) => Promise<any>;
+  addQuiz: (quiz: any) => void;
+  submitQuizAttempt: (userId: string, quiz: any, answers: number[]) => Promise<any>;
   createThread: (lessonId: string, title: string) => Promise<any>;
   createPost: (threadId: string, author: string, authorName: string, text: string) => Promise<any>;
   createReply: (threadId: string, postId: string, author: string, authorName: string, text: string) => Promise<any>;
@@ -112,8 +113,17 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     await refreshResources();
   };
 
-  const submitQuizAttempt = async (userId: string, quizId: string, answers: number[]) => {
-    return await api.submitQuizAttempt(userId, quizId, answers);
+  const addQuiz = (quiz: any) => {
+    const newQuiz = {
+      ...quiz,
+      id: `q${quizzes.length + 1}-${Date.now()}`, // Simple unique ID for presentation
+      questions: quiz.questions.map((q: any, i: number) => ({ ...q, id: `q${quizzes.length + 1}_${i + 1}` })),
+    };
+    setQuizzes(prevQuizzes => [...prevQuizzes, newQuiz]);
+  };
+
+  const submitQuizAttempt = async (userId: string, quiz: any, answers: number[]) => {
+    return await api.submitQuizAttempt(userId, quiz, answers);
   };
 
   const createThread = async (lessonId: string, title: string) => {
@@ -179,6 +189,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         createResource,
         updateResource,
         deleteResource,
+        addQuiz,
         submitQuizAttempt,
         createThread,
         createPost,
