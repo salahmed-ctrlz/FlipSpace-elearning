@@ -123,7 +123,26 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const submitQuizAttempt = async (userId: string, quiz: any, answers: number[]) => {
-    return await api.submitQuizAttempt(userId, quiz, answers);
+    // This logic should ideally be in the backend/API, but we'll simulate it here.
+    const results = quiz.questions.map((q: any, index: number) => {
+      const userAnswer = answers[index];
+      const isCorrect = userAnswer === q.answer;
+      return {
+        questionId: q.id,
+        userAnswer,
+        correctAnswer: q.answer,
+        isCorrect,
+      };
+    });
+
+    const score = results.filter((r: any) => r.isCorrect).length;
+    const total = quiz.questions.length;
+    const percentage = Math.round((score / total) * 100);
+
+    const attempt = { userId, quizId: quiz.id, score, total, percentage, results, timestamp: new Date() };
+    // The mock API expects userId, quizId, and the attempt object separately.
+    await api.submitQuizAttempt(userId, quiz.id, attempt);
+    return attempt;
   };
 
   const createThread = async (lessonId: string, title: string) => {

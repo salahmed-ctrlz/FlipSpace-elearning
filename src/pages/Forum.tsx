@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useData } from '@/contexts/DataContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { DiscussionThread } from '@/components/DiscussionThread';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +17,7 @@ const fadeIn = {
 
 export default function Forum() {
   const { discussions, loading } = useData();
+  const { isTeacher } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedThreadId, setSelectedThreadId] = useState<string | null>(searchParams.get('thread'));
 
@@ -57,7 +59,9 @@ export default function Forum() {
             )}
           </div>
           <p className="text-lg text-muted-foreground mb-12">
-            Engage in discussions, ask questions, and collaborate with your peers
+            {isTeacher
+              ? 'Engage in discussions, ask questions, and collaborate with your students'
+              : 'Engage in discussions, ask questions, and collaborate with your peers'}
           </p>
         </motion.div>
 

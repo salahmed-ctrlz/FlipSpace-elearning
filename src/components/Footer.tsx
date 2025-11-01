@@ -14,10 +14,7 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
     e.preventDefault();
     setStatus('sending');
     
-    // TODO: Replace with your actual email API
-    // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify({ email, message }) })
     await new Promise(resolve => setTimeout(resolve, 1200));
-    
     console.log('Contact form:', { email, message });
     
     setStatus('sent');
@@ -43,7 +40,6 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
         className="bg-background border border-border rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="relative px-6 py-5 border-b border-border/60 bg-gradient-to-br from-muted/50 to-muted/30">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-xl">
@@ -62,7 +58,6 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
           </button>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
           <div className="space-y-2">
             <label htmlFor="contact-email" className="text-sm font-medium text-foreground">
@@ -141,30 +136,30 @@ export const Footer = () => {
   return (
     <>
       <footer className="bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 border-t border-border/50">
-        <div className="container max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Main Content */}
-          <div className="py-16 lg:py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="py-12 sm:py-16 lg:py-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16">
               
               {/* University Section */}
-              <div className="lg:col-span-7 space-y-6">
-                <div className="flex items-start gap-4">
+              <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <DZ 
                     title="Algeria" 
-                    className="w-12 h-auto mt-1 rounded shadow-md flex-shrink-0" 
+                    className="w-10 sm:w-12 h-auto mt-1 rounded shadow-md flex-shrink-0" 
                   />
-                  <div className="space-y-3 flex-1">
-                    <h3 className="text-lg font-semibold text-foreground leading-tight">
+                  <div className="space-y-2 sm:space-y-3 flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg font-semibold text-foreground leading-tight">
                       Tahri Mohamed University of Bechar
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                       Algerian Ministry of Higher Education and Scientific Research
                     </p>
                   </div>
                 </div>
                 
-                <div className="pl-16 space-y-2.5 text-xs text-muted-foreground/80">
+                <div className="pl-13 sm:pl-16 space-y-2 sm:space-y-2.5 text-xs text-muted-foreground/80">
                   <p className="leading-relaxed">
                     ⴰⵖⵍⵉⴼ ⵏ ⵓ ⵙⴻⵍⵎⴻⴷ ⵓⵏⵏⵉⴳ ⴷ ⵓⵏⴰⴷⵉ ⵓⵙⵙⵏⴰⵏ
                   </p>
@@ -174,14 +169,14 @@ export const Footer = () => {
               </div>
 
               {/* Platform & Navigation */}
-              <div className="lg:col-span-5 grid grid-cols-2 gap-12">
+              <div className="lg:col-span-5 grid grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
                 
                 {/* Platform */}
-                <div className="space-y-5">
-                  <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
+                <div className="space-y-4 sm:space-y-5">
+                  <h4 className="text-xs sm:text-sm font-semibold text-foreground uppercase tracking-wide">
                     Platform
                   </h4>
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <Link 
                       to="/" 
                       onClick={scrollToTop}
@@ -190,7 +185,7 @@ export const Footer = () => {
                       <img 
                         src={logo} 
                         alt="FlipSpace" 
-                        className="h-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-md" 
+                        className="h-8 sm:h-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-md" 
                       />
                     </Link>
                     <p className="text-xs text-muted-foreground/80 leading-relaxed max-w-[180px]">
@@ -200,14 +195,14 @@ export const Footer = () => {
                 </div>
 
                 {/* Navigation */}
-                <div className="space-y-5">
-                  <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
+                <div className="space-y-4 sm:space-y-5">
+                  <h4 className="text-xs sm:text-sm font-semibold text-foreground uppercase tracking-wide">
                     Navigation
                   </h4>
-                  <nav className="flex flex-col gap-3">
+                  <nav className="flex flex-col gap-2.5 sm:gap-3">
                     <Link 
                       to="/about" 
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors 
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors 
                                  duration-200 w-fit relative group"
                     >
                       About
@@ -216,7 +211,7 @@ export const Footer = () => {
                     </Link>
                     <button
                       onClick={() => setIsContactOpen(true)}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors 
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors 
                                  duration-200 text-left w-fit relative group"
                     >
                       Contact
@@ -225,7 +220,7 @@ export const Footer = () => {
                     </button>
                     <Link 
                       to="/privacy" 
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors 
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors 
                                  duration-200 w-fit relative group"
                     >
                       Privacy
@@ -234,7 +229,7 @@ export const Footer = () => {
                     </Link>
                     <Link 
                       to="/terms" 
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors 
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors 
                                  duration-200 w-fit relative group"
                     >
                       Terms
@@ -248,12 +243,40 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-border/50 py-6">
-            <div className="text-center">
-              <p className="text-xs text-muted-foreground/70">
-                © {new Date().getFullYear()} FlipSpace. All rights reserved.
-              </p>
+          {/* Bottom Bar with Copyright & Developer Link */}
+          <div className="border-t border-border/50 py-5 sm:py-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2 text-xs text-muted-foreground/70">
+              <span>© {new Date().getFullYear()} FlipSpace. All rights reserved.</span>
+              
+              {/* Developer Link with Tooltip */}
+              <div className="relative inline-block group">
+                <a
+                  href="https://salahmed-ctrlz.github.io/salaheddine-medkour-portfolio/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-1 underline-offset-2 hover:text-foreground transition-colors duration-200"
+                  aria-label="Visit developer portfolio"
+                >
+                  Dev.
+                </a>
+                
+                {/* Tooltip */}
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 
+                                invisible opacity-0 group-hover:visible group-hover:opacity-100 
+                                transition-all duration-200 z-10">
+                  <a
+                    href="https://salahmed-ctrlz.github.io/salaheddine-medkour-portfolio/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-3 py-1.5 bg-primary text-primary-foreground text-xs font-medium 
+                               rounded-lg whitespace-nowrap shadow-lg hover:bg-primary/90 transition-colors"
+                  >
+                    Visit Developer!
+                  </a>
+                  {/* Arrow */}
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rotate-45" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

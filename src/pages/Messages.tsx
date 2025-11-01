@@ -15,7 +15,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const getInitials = (name: string) => name.split(' ').map((n) => n[0]).join('').toUpperCase();
 
 export default function Messages() {
-  const { user } = useAuth();
+  const { user, isTeacher } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const { conversations, sendMessage, createConversation, loading } = useData();
@@ -78,7 +78,9 @@ export default function Messages() {
             <h1 className="font-serif text-4xl md:text-5xl">Messages</h1>
           </div>
           <p className="text-lg text-muted-foreground mb-12">
-            Communicate with your teachers and peers directly.
+            {isTeacher
+              ? 'Interact with your students and offer more scaffolding'
+              : 'Communicate with your teachers and peers directly.'}
           </p>
         </motion.div>
 

@@ -12,7 +12,7 @@ import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
-import { Users, BookOpen, CheckCircle, TrendingUp, Download, Info, ShieldAlert } from 'lucide-react';
+import { Users, BookOpen, CheckCircle, TrendingUp, Download, Info, ShieldAlert, FileText, Users2 } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { useToast } from '@/hooks/use-toast';
@@ -67,7 +67,7 @@ export default function Analytics() {
       try {
         setIsLoading(true);
         const [fetchedUsers, fetchedQuizzes] = await Promise.all([
-          api.fetchUsers(),
+          (api as any).fetchUsers(),
           api.fetchQuizzes()
         ]);
         setUsers(fetchedUsers || []);
@@ -687,6 +687,61 @@ export default function Analytics() {
             </Card>
           </motion.div>
         </div>
+
+        {/* Report Type Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-12"
+        >
+          <div className="mb-8 text-center">
+            <h2 className="font-serif text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+              Generate In-Depth Reports
+            </h2>
+            <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
+              Create detailed PDF reports for collective class insights or individual student performance, including personalized feedback.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <Card className="paper-shadow hover:paper-shadow-lifted transition-all duration-300 h-full border-border/60 hover:border-primary/30">
+              <CardHeader className="space-y-6 pb-4">
+                <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/20 flex items-center justify-center">
+                  <Users2 className="h-7 w-7 text-blue-600" />
+                </div>
+                <div className="space-y-3">
+                  <CardTitle className="font-serif text-xl font-semibold">
+                    Collective Reports & Overall Summary
+                  </CardTitle>
+                  <CardDescription className="text-sm leading-relaxed">
+                    Get a high-level overview of the entire class's performance, engagement, and assessment results.
+                  </CardDescription>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground">Available via the "Generate Report" button.</p>
+              </CardContent>
+            </Card>
+            <Card className="paper-shadow hover:paper-shadow-lifted transition-all duration-300 h-full border-border/60 hover:border-primary/30">
+              <CardHeader className="space-y-6 pb-4">
+                <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/20 flex items-center justify-center">
+                  <FileText className="h-7 w-7 text-purple-600" />
+                </div>
+                <div className="space-y-3">
+                  <CardTitle className="font-serif text-xl font-semibold">
+                    Individual Reports & Personalized Feedback
+                  </CardTitle>
+                  <CardDescription className="text-sm leading-relaxed">
+                    Generate detailed reports for each student, including simulated personalized feedback and recommendations.
+                  </CardDescription>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground">Available via the "Generate Report" button.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </motion.div>
 
         {/* Important Information Section */}
         <motion.div

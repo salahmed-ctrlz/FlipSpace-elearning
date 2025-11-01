@@ -137,7 +137,7 @@ export default function Dashboard() {
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
               {isTeacher
-                ? 'Manage your course and track student progress'
+                ? "Your learner's performance summary"
                 : 'Continue your learning journey'}
             </p>
           </div>
