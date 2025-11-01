@@ -202,7 +202,7 @@ export default function Assessments() {
           </div>
           <p className="text-lg text-muted-foreground mb-12">
             {isTeacher
-              ? 'Create assessments and track your students progress'
+              ? "Create assessments and track your students' progress"
               : 'Test your knowledge and track your progress'}
           </p>
         </motion.div>

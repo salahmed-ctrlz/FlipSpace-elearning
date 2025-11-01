@@ -27,7 +27,7 @@ function TypingEffect({ text, onComplete }: { text: string; onComplete?: () => v
   const index = React.useRef(0);
 
   React.useEffect(() => {
-    setDisplayedText("");
+    setDisplayedText(text.charAt(0));
     index.current = 0;
     const intervalId = setInterval(() => {
       if (index.current < text.length) {

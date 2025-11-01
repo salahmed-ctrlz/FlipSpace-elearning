@@ -120,7 +120,7 @@ export default function Dashboard() {
   const studentProgressData = [
     { id: 'stat1', name: 'Students Enrolled', value: 32, icon: UserCheck, progress: null },
     { id: 'stat2', name: 'Average Course Progress', value: 78, icon: TrendingUp, progress: 78 },
-    { id: 'stat3', name: 'Homeworks Returned', value: 92, icon: BookCheck, progress: 92 },
+    { id: 'stat3', name: 'Pre-class Content Completion', value: 92, icon: BookCheck, progress: 92 },
     { id: 'stat4', name: 'Average Quiz Score', value: 85, icon: Percent, progress: 85 },
   ];
 
@@ -137,7 +137,7 @@ export default function Dashboard() {
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
               {isTeacher
-                ? "Your learner's performance summary"
+                ? "Your learners' performance summary"
                 : 'Continue your learning journey'}
             </p>
           </div>
